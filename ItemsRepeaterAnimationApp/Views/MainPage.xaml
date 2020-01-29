@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="ItemsRepeaterAnimationApp.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:viewModels="using:ItemsRepeaterAnimationApp.ViewModels"
+    xmlns:views="using:ItemsRepeaterAnimationApp.Views"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <!--
+                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.
+            -->
+            <muxc:ItemsRepeaterScrollHost >
+                <ScrollViewer x:Name="ScrollViewer">
+                    <muxc:ItemsRepeater x:Name="ItemsRepeater" Tapped="ItemsRepeater_OnTapped" ItemsSource="{x:Bind ViewModel.ViewModels}">
+                        <muxc:ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="viewModels:StoryViewModel">
+                                <views:StoryView ViewModel="{x:Bind Mode=OneWay}" />
+                            </DataTemplate>
+                        </muxc:ItemsRepeater.ItemTemplate>
+                        <muxc:ItemsRepeater.Layout>
+                            <muxc:UniformGridLayout MinColumnSpacing="24" MinRowSpacing="24"/>
+                        </muxc:ItemsRepeater.Layout>
+                    </muxc:ItemsRepeater>
+                </ScrollViewer>
+            </muxc:ItemsRepeaterScrollHost>
+        </Grid>
+    </Grid>
+</Page>
