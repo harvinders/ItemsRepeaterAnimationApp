@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Height="300"
-    Width="250"
+    Height="200"
+    Width="150"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
@@ -19,7 +19,7 @@
         BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
         BorderThickness="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Image x:Name="Image"  Source="{x:Bind ViewModel.Image}" Stretch="UniformToFill" />

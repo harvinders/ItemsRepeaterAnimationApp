@@ -17,28 +17,29 @@ namespace ItemsRepeaterAnimationApp.Views
         {
             InitializeComponent();
 
-            ItemsRepeater.Loaded += (sender, args) =>
-            {
-                var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("backAnimation");
-                if (animation != null)
-                {
-                    var element = ItemsRepeater.GetOrCreateElement(_index);
-                    // ensure the item is given a valid position
-                    element.UpdateLayout();
-
-
-                    element.StartBringIntoView(new BringIntoViewOptions()
-                    {
-
-                    });
-
-                    var image = element.GetFirstDescendantOfType<Image>();
-                    animation.TryStart(image);
-
-                }
-            };
+            //ItemsRepeater.Loaded += ItemsRepeater_Loaded;
         }
 
+        private void ItemsRepeater_Loaded(object sender, RoutedEventArgs e)
+        {
+            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("backAnimation");
+            if (animation != null)
+            {
+                //var element = ItemsRepeater.GetOrCreateElement(_index);
+                //// ensure the item is given a valid position
+                //element.UpdateLayout();
+
+
+                //element.StartBringIntoView(new BringIntoViewOptions()
+                //{
+
+                //});
+
+                //var image = element.GetFirstDescendantOfType<Image>();
+                //animation.TryStart(image);
+
+            }
+        }
 
         private void ItemsRepeater_OnTapped(object sender, TappedRoutedEventArgs e)
         {
@@ -55,6 +56,13 @@ namespace ItemsRepeaterAnimationApp.Views
             //ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("forwardAnimation", image);
 
             //NavigationService.Navigate<DetailPage>(ViewModel);
+
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            //ItemsRepeater.Loaded -= ItemsRepeater_Loaded;
 
         }
     }
